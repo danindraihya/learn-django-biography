@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+        {% for data in list_biography %}
+            <div class="col-md-6">
+                <div class="card mt-3" style="width: 18rem; height: 500px;" >
+                    <img src="{{data.photo.url}}" class="card-img-top" height="300px">
+                    <div class="card-body">
+                      <h5 class="card-title">{{data.name}}</h5>
+                      <p class="card-text">{{data.description|truncatechars:70}}</p>
+                      <a href="#" class="btn btn-primary" >{{forloop.counter}}</a>
+                    </div>
+                </div>
+            </div>         
+        {% endfor %}
+        </div>
+    </div>
+    <div class="col-sm">
+        <form class="form-inline mt-3" method="GET" action="{% url 'biography:search' %}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="input_search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+    </div>
+</div>
+
+{% endblock content %}
+    
