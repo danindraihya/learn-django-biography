@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'biography:index' %}" class="btn btn-primary stretched-link">Back</a>
+
+    <div class="col-md-12 border border-dark p-2 mt-3">
+        <div class="image-wrapper float-left pr-3">
+            <img src="{{object.photo.url}}" width="240" height="300">
+        </div>
+        <div class="single-post-content-wrapper p-3">
+            <h4>{{object.name}}</h4>
+            <br>
+            <p>Gender : {{object.gender}}</p>
+            <p>Birth  : {{object.place_of_birth}} - {{object.date_of_birth}}</p>
+            <p>Description : </p>
+            <br>
+            <p>{{object.description}}</p>
+        </div>
+    </div>
+{% endblock content %}
+    

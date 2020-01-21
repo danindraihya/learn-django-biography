@@ -11,7 +11,7 @@
                     <div class="card-body">
                       <h5 class="card-title">{{data.name}}</h5>
                       <p class="card-text">{{data.description|truncatechars:70}}</p>
-                      <a href="#" class="btn btn-primary" >{{forloop.counter}}</a>
+                      <a href="{% url 'biography:detail' data.slug %}" class="btn btn-info" >See Detail</a>
                     </div>
                 </div>
             </div>         

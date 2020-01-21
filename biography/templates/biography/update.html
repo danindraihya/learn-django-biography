@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{form.title.id_for_label}}">{{form.title.label}}</label>
+        <input type="text" class="form-control" id="{{form.title.id_for_label}}" name="{{form.title.name}}" value="{{form.title.value}}">
+    </div>
+
+    <div class="form-group">
+        <label for="{{form.name.id_for_label}}">{{form.name.label}}</label>
+        <input type="text" class="form-control" id="{{form.name.id_for_label}}" name="{{form.name.name}}" value="{{form.name.value}}">
+    </div>
+    
+    <div class="form-group">
+        {{form.gender.label_tag}}
+        {% for field in form.gender  %}
+            <div class="form-check">
+                {{field.tag}}
+                <label for="{{field.id_for_label}}" class="form-check-label">
+                    {{field.choice_label}}
+                </label>
+            </div>
+        
+        {% endfor %}
+    </div>
+    
+    <div class="form-group">
+        <label for="{{form.place_of_birth.id_for_label}}">{{form.place_of_birth.label}}</label>
+        <input type="text" class="form-control" id="{{form.place_of_birth.id_for_label}}" name="{{form.place_of_birth.name}}" value="{{form.place_of_birth.value}}">
+    </div>
+
+    <div class="form-group">
+        {{form.date_of_birth.label_tag}}
+        <div class="form-row">
+            {{form.date_of_birth}}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            <label for="{{form.description.id_for_label}}">{{form.description.label}}</label>
+            <textarea class="form-control" id="{{form.description.id_for_label}}" rows="3" name="{{form.description.name}}">{{form.description.value}}</textarea>
+          </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{form.photo.id_for_label}}">{{form.photo.label}}</label>
+        <input type="file" class="form-control-file" id="{{form.photo.id_for_label}}" name="{{form.photo.name}}" value="{{form.photo.value}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="{% url 'biography:manage' %}" class="btn btn-primary">Back</a>
+</form>
+{% endblock content %}
+    
