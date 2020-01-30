@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePage.as_view(), name='index'),
     path('biography/', include(('biography.urls', 'biography'), namespace='biography')),
+    path('user/', include(('user.urls', 'user'), namespace='user')),
 ] 
 
 if settings.DEBUG:
